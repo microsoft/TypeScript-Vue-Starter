@@ -1,0 +1,27 @@
+{
+  "name": "typescript-vue-todomvc",
+  "version": "1.0.0",
+  "description": "A sample Vue application that uses TypeScript along with .vue files.",
+  "main": "index.js",
+  "author": {
+    "name": "Daniel Rosenwasser",
+    "url": "https://github.com/DanielRosenwasser"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "todomvc-app-css": "^2.1.0",
+    "todomvc-common": "^1.0.3",
+    "vue": "https://github.com/DanielRosenwasser/vue#540a38fb21adb7a7bc394c65e23e6cffb36cd867",
+    "vue-router": "https://github.com/DanielRosenwasser/vue-router#01b8593cf69c2a5077df45e37e2b24d95bf35ce3"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.0",
+    "ts-loader": "^2.0.3",
+    "tslint": "^5.1.0",
+    "typescript": "~2.3.1",
+    "vue-loader": "^12.0.0",
+    "vue-template-compiler": "2.2.1",
+    "vue-ts-loader": "^0.0.3",
+    "webpack": "^2.4.1"
+  }
+}
