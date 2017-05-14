@@ -100,7 +100,7 @@ We strongly recommend using TypeScript's stricter options for a better experienc
 
 # Adding Webpack
 
-We'll need to add a `webpack.config.json` to bundle our app.
+We'll need to add a `webpack.config.js` to bundle our app.
 
 ```js
 var path = require('path')
