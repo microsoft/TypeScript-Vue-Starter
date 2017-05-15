@@ -1,10 +1,9 @@
-// @ts-check
 
 var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/main.ts',
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',

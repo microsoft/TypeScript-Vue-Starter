@@ -1,9 +1,13 @@
 {
     "compilerOptions": {
+        "outDir": "./built/",
+        "sourceMap": true,
         "strict": true,
         "module": "es2015",
         "moduleResolution": "node",
-        "target": "es5",
-        "allowSyntheticDefaultImports": true
-    }
+        "target": "es5"
+    },
+    "include": [
+        "./src/**/*"
+    ]
 }
