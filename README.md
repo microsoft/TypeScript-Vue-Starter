@@ -86,7 +86,8 @@ Simply create a new file in your project root named `tsconfig.json` and fill it 
         "noImplicitReturns": true,
         "module": "es2015",
         "moduleResolution": "node",
-        "target": "es5"
+        "target": "es5",
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "./src/**/*"
