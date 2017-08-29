@@ -53,13 +53,13 @@ We'll be using a custom repository that uses experimental declarations for Vue.
 These declarations are currently maintained on a fork of Vue, but may be part of the main repo in the near future.
 
 ```sh
-npm install https://github.com/DanielRosenwasser/vue#540a38fb21adb7a7bc394c65e23e6cffb36cd867
+npm install --save vue vue-router
 ```
 
 Next, ensure TypeScript, Webpack and the necessary loaders are installed.
 
 ```sh
-npm install --save-dev typescript webpack ts-loader css-loader vue-loader vue-template-compiler@2.2.1
+npm install --save-dev typescript webpack ts-loader css-loader vue-loader vue-template-compiler
 ```
 
 Webpack is a tool that will bundle your code and optionally all of its dependencies into a single `.js` file.
@@ -86,7 +86,8 @@ Simply create a new file in your project root named `tsconfig.json` and fill it 
         "noImplicitReturns": true,
         "module": "es2015",
         "moduleResolution": "node",
-        "target": "es5"
+        "target": "es5",
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "./src/**/*"
@@ -191,8 +192,7 @@ Your `"scripts"` field should look something like this:
 
 ```json
 "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
 ```
 
