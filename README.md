@@ -442,6 +442,40 @@ Notice a few things about our single-file component:
 
 Try running `npm run build` and open up `index.html` to see the result!
 
+# Use Decorators to define a component
+
+Components can also be defined using [Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html). With the help of two additional packages ([vue-class-component](https://github.com/vuejs/vue-class-component) and [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator)), the definition of our component can be simplified as following:
+
+```ts
+@Component
+export default class HelloDecorator extends Vue {
+    @Prop() public name: string;
+    @Prop() public initialEnthusiasm: number;
+    enthusiasm = this.initialEnthusiasm;
+    increment() {
+        this.enthusiasm++;
+    }
+    decrement() {
+        if (this.enthusiasm > 1) {
+            this.enthusiasm--;
+        }
+    }
+    get exclamationMarks(): string {
+        return Array(this.enthusiasm + 1).join('!');
+    }
+}
+```
+
+Instead of using `Vue.extend` to define our component, we create a TypeScript class extending `Vue` and prefix it with the `@Component` decorator from the `vue-class-component` package.
+
+Properties are defined by prefixing instance variables with the `@Prop()` decorator from the `vue-property-decorator` package.
+
+Regular instance variables, such as `enthusiasm` in our example, are automatically made available for data binding to the template. Note that all variables must be set to a value other than `undefined` for the binding to work.
+
+Similarly, all instance methods are automatically made available for the template.
+
+Finally, the computed properties are implemented as `get` properties.
+
 # What next?
 
 You can [try out this application by cloning it from GitHub](https://github.com/DanielRosenwasser/typescript-vue-tutorial).
