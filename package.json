@@ -15,15 +15,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "vue": "https://github.com/DanielRosenwasser/vue#540a38fb21adb7a7bc394c65e23e6cffb36cd867",
-    "vue-router": "https://github.com/DanielRosenwasser/vue-router#01b8593cf69c2a5077df45e37e2b24d95bf35ce3"
+    "vue": "^2.5.2",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^6.0.0",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "css-loader": "^0.28.1",
     "ts-loader": "^2.0.3",
     "typescript": "^2.3.2",
     "vue-loader": "^12.0.3",
-    "vue-template-compiler": "2.2.1",
+    "vue-template-compiler": "^2.5.2",
     "webpack": "^2.5.0"
   }
 }

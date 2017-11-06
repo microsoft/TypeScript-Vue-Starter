@@ -442,6 +442,44 @@ Notice a few things about our single-file component:
 
 Try running `npm run build` and open up `index.html` to see the result!
 
+# Using decorators to define a component
+
+Components can also be defined using [decorators](https://www.typescriptlang.org/docs/handbook/decorators.html).
+With the help of two additional packages, ([vue-class-component](https://github.com/vuejs/vue-class-component) and [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator)), our components can be rewritten in the following manner:
+
+```ts
+import { Vue, Component, Prop } from "vue-property-decorator";
+
+@Component
+export default class HelloDecorator extends Vue {
+    @Prop() name: string;
+    @Prop() initialEnthusiasm: number;
+    enthusiasm = this.initialEnthusiasm;
+    increment() {
+        this.enthusiasm++;
+    }
+    decrement() {
+        if (this.enthusiasm > 1) {
+            this.enthusiasm--;
+        }
+    }
+    get exclamationMarks(): string {
+        return Array(this.enthusiasm + 1).join('!');
+    }
+}
+```
+
+Instead of using `Vue.extend` to define our component, we create a class extending `Vue` and decorate it using the `@Component` decorator from the `vue-class-component` package (which was re-exported from the `vue-property-decorator` package).
+
+Properties are defined by prefixing instance variables with the `@Prop()` decorator from the `vue-property-decorator` package.
+
+Regular instance variables, such as `enthusiasm` in our example, are automatically made available for data binding to the template, just as if they had been defined in the `data` field.
+Note that all variables must be set to a value other than `undefined` for the binding to work.
+
+Similarly, methods such as `increment` are treated as if they had been written in the `methods` field, and are automatically made available for the template.
+
+Finally, computed properties like `exclamationMarks` are simply written as `get` accessors.
+
 # What next?
 
 You can [try out this application by cloning it from GitHub](https://github.com/DanielRosenwasser/typescript-vue-tutorial).
