@@ -442,15 +442,18 @@ Notice a few things about our single-file component:
 
 Try running `npm run build` and open up `index.html` to see the result!
 
-# Use Decorators to define a component
+# Using decorators to define a component
 
-Components can also be defined using [Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html). With the help of two additional packages ([vue-class-component](https://github.com/vuejs/vue-class-component) and [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator)), the definition of our component can be simplified as following:
+Components can also be defined using [decorators](https://www.typescriptlang.org/docs/handbook/decorators.html).
+With the help of two additional packages, ([vue-class-component](https://github.com/vuejs/vue-class-component) and [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator)), our components can be rewritten in the following manner:
 
 ```ts
+import { Vue, Component, Prop } from "vue-property-decorator";
+
 @Component
 export default class HelloDecorator extends Vue {
-    @Prop() public name: string;
-    @Prop() public initialEnthusiasm: number;
+    @Prop() name: string;
+    @Prop() initialEnthusiasm: number;
     enthusiasm = this.initialEnthusiasm;
     increment() {
         this.enthusiasm++;
@@ -466,15 +469,16 @@ export default class HelloDecorator extends Vue {
 }
 ```
 
-Instead of using `Vue.extend` to define our component, we create a TypeScript class extending `Vue` and prefix it with the `@Component` decorator from the `vue-class-component` package.
+Instead of using `Vue.extend` to define our component, we create a class extending `Vue` and decorate it using the `@Component` decorator from the `vue-class-component` package (which was re-exported from the `vue-property-decorator` package).
 
 Properties are defined by prefixing instance variables with the `@Prop()` decorator from the `vue-property-decorator` package.
 
-Regular instance variables, such as `enthusiasm` in our example, are automatically made available for data binding to the template. Note that all variables must be set to a value other than `undefined` for the binding to work.
+Regular instance variables, such as `enthusiasm` in our example, are automatically made available for data binding to the template, just as if they had been defined in the `data` field.
+Note that all variables must be set to a value other than `undefined` for the binding to work.
 
-Similarly, all instance methods are automatically made available for the template.
+Similarly, methods such as `increment` are treated as if they had been written in the `methods` field, and are automatically made available for the template.
 
-Finally, the computed properties are implemented as `get` properties.
+Finally, computed properties like `exclamationMarks` are simply written as `get` accessors.
 
 # What next?
 
