@@ -1,6 +1,7 @@
 import Vue from "vue";
 import HelloComponent from "./components/Hello.vue";
 import HelloDecoratorComponent from "./components/HelloDecorator.vue";
+import HelloTsComponent from "./components/HelloTs";
 
 let v = new Vue({
     el: "#app",
@@ -11,11 +12,14 @@ let v = new Vue({
         <hello-component :name="name" :initialEnthusiasm="5" />
         <h1>Hello Decorator Component</h1>
         <hello-decorator-component :name="name" :initialEnthusiasm="5" />
-        </div>
+        <h1>Hello Typescript only</h1>
+        <hello-ts-component :name="name" :initialEnthusiasm="5" />
+    </div>
     `,
     data: { name: "World" },
     components: {
         HelloComponent,
-        HelloDecoratorComponent
+        HelloDecoratorComponent,
+        HelloTsComponent
     }
 });
