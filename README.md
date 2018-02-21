@@ -49,23 +49,14 @@ You can always go back and change these in the `package.json` file that's been g
 
 # Install our dependencies
 
-We'll be using a custom repository that uses experimental declarations for Vue.
-These declarations are currently maintained on a fork of Vue, but may be part of the main repo in the near future.
+Ensure TypeScript, Webpack, Vue and the necessary loaders are installed.
 
 ```sh
-npm install https://github.com/DanielRosenwasser/vue#540a38fb21adb7a7bc394c65e23e6cffb36cd867
-```
-
-Next, ensure TypeScript, Webpack and the necessary loaders are installed.
-
-```sh
-npm install --save-dev typescript webpack ts-loader css-loader vue-loader vue-template-compiler@2.2.1
+npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler
 ```
 
 Webpack is a tool that will bundle your code and optionally all of its dependencies into a single `.js` file.
 While you don't need to use a bundler like Webpack or Browserify, these tools will allow us to use `.vue` files which we'll cover in a bit.
-
-We've locked onto version 2.2.1 of the vue-template-compiler so that it operates smoothly with our fork of Vue.
 
 We didn't need to [add `.d.ts` files](https://www.typescriptlang.org/docs/handbook/declaration-files/consumption.html), but if we were using a package which didn't ship declaration files, we'd need to install the appropriate `@types/` package.
 [Read more about using definition files in our documentation](https://www.typescriptlang.org/docs/handbook/declaration-files/consumption.html).
