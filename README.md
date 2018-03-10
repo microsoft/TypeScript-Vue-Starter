@@ -52,7 +52,7 @@ You can always go back and change these in the `package.json` file that's been g
 Ensure TypeScript, Webpack, Vue and the necessary loaders are installed.
 
 ```sh
-npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler
+npm install --save-dev typescript webpack webpack-cli ts-loader css-loader vue vue-loader vue-template-compiler
 ```
 
 Webpack is a tool that will bundle your code and optionally all of its dependencies into a single `.js` file.
@@ -83,6 +83,10 @@ Simply create a new file in your project root named `tsconfig.json` and fill it 
         "./src/**/*"
     ]
 }
+```
+*Trick:* you can use tsc(version>1.6) to initializes a TypeScript project and creates a tsconfig.json file by the command below:
+```sh
+tsc --init -m es2015 --strict --outDir ./build  --sourceMap --noImplicitReturns -t es5
 ```
 
 Notice the `strict` flag is set to true.
@@ -182,7 +186,7 @@ Your `"scripts"` field should look something like this:
 
 ```json
 "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 ```
