@@ -443,9 +443,11 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component
 export default class HelloDecorator extends Vue {
-    @Prop() name: string;
-    @Prop() initialEnthusiasm: number;
+    @Prop() name!: string;
+    @Prop() initialEnthusiasm!: number;
+
     enthusiasm = this.initialEnthusiasm;
+
     increment() {
         this.enthusiasm++;
     }
@@ -454,6 +456,7 @@ export default class HelloDecorator extends Vue {
             this.enthusiasm--;
         }
     }
+
     get exclamationMarks(): string {
         return Array(this.enthusiasm + 1).join('!');
     }
@@ -463,6 +466,8 @@ export default class HelloDecorator extends Vue {
 Instead of using `Vue.extend` to define our component, we create a class extending `Vue` and decorate it using the `@Component` decorator from the `vue-class-component` package (which was re-exported from the `vue-property-decorator` package).
 
 Properties are defined by prefixing instance variables with the `@Prop()` decorator from the `vue-property-decorator` package.
+Because the `--strictPropertyInitialization` option is on, we need to tell TypeScript that Vue will initialize our properties by appending a `!` to them.
+This tells TypeScript "hey, relax, someone else is going to assign this property a value."
 
 Regular instance variables, such as `enthusiasm` in our example, are automatically made available for data binding to the template, just as if they had been defined in the `data` field.
 Note that all variables must be set to a value other than `undefined` for the binding to work.
