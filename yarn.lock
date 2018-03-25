@@ -2040,6 +2040,10 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+reflect-metadata@^0.1.10:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
+
 regenerate@^1.2.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
@@ -2382,9 +2386,9 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
-typescript@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.2.tgz#f0f045e196f69a72f06b25fd3bd39d01c3ce9984"
+typescript@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
 
 uglify-js@^2.8.5:
   version "2.8.22"
@@ -2461,6 +2465,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-class-component@^6.0.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-6.2.0.tgz#7adb1daa9a868c75f30f97f33f4f1b94aee62089"
+
 vue-hot-reload-api@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
@@ -2483,9 +2491,16 @@ vue-loader@^12.0.3:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.2.2"
 
-"vue-router@https://github.com/DanielRosenwasser/vue-router#01b8593cf69c2a5077df45e37e2b24d95bf35ce3":
-  version "2.3.0"
-  resolved "https://github.com/DanielRosenwasser/vue-router#01b8593cf69c2a5077df45e37e2b24d95bf35ce3"
+vue-property-decorator@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-6.0.0.tgz#bb651b293542e31db0d24f36f4b0250ef08d8515"
+  dependencies:
+    reflect-metadata "^0.1.10"
+    vue-class-component "^6.0.0"
+
+vue-router@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
 
 vue-style-loader@^3.0.0:
   version "3.0.1"
@@ -2494,9 +2509,9 @@ vue-style-loader@^3.0.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.2.1.tgz#ca5e43db50dc6e761e3c1296313de33091783511"
+vue-template-compiler@^2.5.2:
+  version "2.5.16"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.5.16.tgz#93b48570e56c720cdf3f051cc15287c26fbd04cb"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -2505,9 +2520,9 @@ vue-template-es2015-compiler@^1.2.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.5.2.tgz#a0a6c50c941d2a4abda963f2f42c337ac450ee95"
 
-"vue@https://github.com/DanielRosenwasser/vue#540a38fb21adb7a7bc394c65e23e6cffb36cd867":
-  version "2.2.1"
-  resolved "https://github.com/DanielRosenwasser/vue#540a38fb21adb7a7bc394c65e23e6cffb36cd867"
+vue@^2.5.2:
+  version "2.5.16"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
 watchpack@^1.3.1:
   version "1.3.1"
