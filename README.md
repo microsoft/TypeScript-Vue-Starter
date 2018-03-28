@@ -104,6 +104,8 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
+  mode: "development",
+  target: "node",
   module: {
     rules: [
       {
@@ -141,7 +143,8 @@ module.exports = {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
-    }
+    },
+    modules: ["node_modules"]
   },
   devServer: {
     historyApiFallback: true,
