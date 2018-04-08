@@ -5,10 +5,18 @@
         "strict": true,
         "module": "es2015",
         "moduleResolution": "node",
-        "target": "es5",
-        "experimentalDecorators": true
+        "target": "es6",
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "typeRoots": [
+            "node_modules/@types/"
+        ]
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*",
+        "./test/**/*"
     ]
 }

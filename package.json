@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha-webpack"
   },
   "keywords": [],
   "author": {
@@ -15,14 +15,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@types/node": "^9.6.2",
     "vue": "^2.5.2",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^9.6.2",
+    "@vue/test-utils": "^1.0.0-beta.12",
     "css-loader": "^0.28.1",
+    "chai": "^4.1.2",
+    "jsdom": "^11.6.2",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.0.4",
+    "mocha-webpack": "^1.1.0",
     "ts-loader": "^2.0.3",
     "typescript": "^2.7.2",
     "vue-loader": "^12.0.3",
