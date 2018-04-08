@@ -1,9 +1,9 @@
-import Vue from "vue";
-import HelloComponent from "./components/Hello.vue";
-import HelloDecoratorComponent from "./components/HelloDecorator.vue";
+import Vue from 'vue';
+import HelloComponent from './components/Hello.vue';
+import HelloDecoratorComponent from './components/HelloDecorator.vue';
 
-let v = new Vue({
-    el: "#app",
+const v = new Vue({
+    el: '#app',
     template: `
     <div>
         Name: <input v-model="name" type="text">
@@ -13,9 +13,9 @@ let v = new Vue({
         <hello-decorator-component :name="name" :initialEnthusiasm="5" />
         </div>
     `,
-    data: { name: "World" },
+    data: { name: 'World' },
     components: {
         HelloComponent,
-        HelloDecoratorComponent
-    }
+        HelloDecoratorComponent,
+    },
 });
