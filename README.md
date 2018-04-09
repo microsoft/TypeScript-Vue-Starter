@@ -476,6 +476,115 @@ Similarly, methods such as `increment` are treated as if they had been written i
 
 Finally, computed properties like `exclamationMarks` are simply written as `get` accessors.
 
+# Testing your component
+
+Once we are proud of our component, we can make sure itis working it by testing it. Sure we could open a browser and test it out manually but that would take time. We want to make sure it works after every change. Let's start  unit testing.
+
+## Setting up tests
+
+First we will need a couple of tools to enable testing. Let's install them.
+``` bash
+npm install --save-dev mocha mocha-webpack chai @vue/test-utils
+```
+`mocha` will be the test runner, `chai` the assesment library. `vue/test-utils` is going to help us test VueJs components.
+
+`mocha` and `chai` are JavaScript libraries not TypeScript tools. We will need their typings to benefit from typescript autocomplete and type checking.
+``` bash
+npm install --save-dev @types/mocha @types/chai
+```
+
+Now we can start writing our first tests. 
+Traditionally test files are named like the files they are testing with a `.spec` suffix. For instance if you wite a test for `Hello.vue`, you will want to name your test file `Hello.spec.ts`.
+
+You can store this file anywhere, including just beside the file it is testing.
+I prefer to put them in a separate folder called `tests` or `test`. 
+
+In order to run those tests, we can run complicated commands every time or we can set up a shortcut in our `package.json` file. adding that shortcut has another upside, it allows us to call command line tools that are defined only for this package. For instance `mocha-webpack` in this case.
+
+Let's add a simple test script to our `package.json`
+``` json
+{
+    "scripts": {
+        "test": "mocha-webpack \"**/*.spec.ts\""
+    }
+}
+```
+
+`mocha-webpack` will automatically look for a `webpack.config.js`, compile your components and run the tests returned by the glob `**/*.spec.ts`.
+
+Once we create our first test file `Hello.spec.ts` it should look like this
+
+``` ts
+import Hello from 'src/components/Hello.vue';
+import { shallow, Wrapper } from '@vue/test-utils';
+import { expect } from 'chai';
+import Vue from 'vue';
+
+describe('Hello.vue', () => {
+  let wrapper: Wrapper<Vue>;
+  it('should display greeting', () => {
+    wrapper = shallow(Hello, {propsData: {name: 'VueJs TypeScript', initialEnthusiasm: 2}});
+
+    expect(wrapper.find('.greeting').text()).to.contain('VueJs TypeScript');
+  });
+});
+```
+
+If we try to run our tests now we should get an error. Indeed, mocha-webpack runs all the tests in a node environment. We are trying to test a browser environment. We will need to help him a bit. Let's use `jsdom` to build a make-believe browser just for our tests.
+
+``` bash
+npm install --save-dev jsdom jsdom-global
+```
+
+Once installed we still need to tell `mocha-webpack` to use it.
+
+We will do that in the `package.json` script
+
+``` json
+{
+    "scripts": {
+        "test": "mocha-webpack \"**/*.spec.ts\" --require \"test/setup.js\""
+    }
+}
+```
+Referencing the file `test/setup.js` containing
+
+``` js
+require('jsdom-global')()
+```
+Now running tests using `npm run test` works like a charm.
+
+## Testing a method
+Using the `@vue/test-utils` it is easy to test a rendered component.
+It is a little trickier to test a methods or a calculated propertiy.
+
+In JavaScript, we would test the `increment` method like so
+
+``` js
+...
+it('should increment enthousiasm', () => {
+    wrapper = shallow(Hello, {propsData: {name: 'VueJs TypeScript', initialEnthusiasm: 2}});
+    wrapper.vm.increment();
+    expect(wrapper.find('.greeting').text()).to.contain('!!!');
+})
+...
+```
+
+TypeScript will complain about increment not being a function of Vue. This is because we are using shims. We make TypeScript think that every file that ends with `.vue` exports a Vue object.
+To remove the error, the fastest way is to cast the vm as an `any`.
+
+```ts
+... 
+it('should increment enthousiasm', () => {
+    wrapper = shallow(Hello, {propsData: {name: 'VueJs TypeScript', initialEnthusiasm: 2}});
+    (wrapper.vm as any).increment();
+    expect(wrapper.find('.greeting').text()).to.contain('!!!');
+})
+...
+```
+
+You can find more info about how to test Vue components on the [guides](https://vue-test-utils.vuejs.org/en/guides/)
+
 # What next?
 
 You can [try out this application by cloning it from GitHub](https://github.com/DanielRosenwasser/typescript-vue-tutorial).
