@@ -52,7 +52,7 @@ You can always go back and change these in the `package.json` file that's been g
 Ensure TypeScript, Webpack, Vue and the necessary loaders are installed.
 
 ```sh
-npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler
+npm install --save-dev typescript webpack webpack-cli ts-loader css-loader vue vue-loader vue-style-loader vue-template-compiler
 ```
 
 Webpack is a tool that will bundle your code and optionally all of its dependencies into a single `.js` file.
@@ -94,8 +94,9 @@ We strongly recommend using TypeScript's stricter options for a better experienc
 We'll need to add a `webpack.config.js` to bundle our app.
 
 ```js
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -115,17 +116,17 @@ module.exports = {
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
             'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           }
           // other vue-loader options go here
         }
       },
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/],
+          appendTsSuffixTo: [/\.vue$/]
         }
       },
       {
@@ -134,9 +135,19 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
       }
     ]
   },
+  plugins: [
+    new VueLoaderPlugin()
+  ],
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
@@ -151,10 +162,10 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map'
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+  module.exports.devtool = '#source-map';
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
@@ -171,7 +182,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
-  ])
+  ]);
 }
 ```
 
