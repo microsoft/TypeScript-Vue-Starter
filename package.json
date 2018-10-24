@@ -6,6 +6,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "build:prod": "cross-env NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -21,6 +23,7 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.1",
     "ts-loader": "^2.0.3",
     "typescript": "^2.7.2",
