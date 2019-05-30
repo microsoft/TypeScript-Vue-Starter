@@ -68,7 +68,7 @@ You'll want to bring your TypeScript files together - both the code you'll be wr
 To do this, you'll need to create a `tsconfig.json` which contains a list of your input files as well as all your compilation settings.
 Simply create a new file in your project root named `tsconfig.json` and fill it with the following contents:
 
-You can easily crate `tsconfig.json` this command.
+You can easily create `tsconfig.json` this command.
 
 ```
 tsc --init
