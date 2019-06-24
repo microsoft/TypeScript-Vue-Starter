@@ -1,7 +1,13 @@
 # TypeScript Vue Starter
 
-This quick start guide will teach you how to get TypeScript and [Vue](https://vuejs.org) working together.
+This quick start guide will teach you how to get [TypeScript](http://www.typescriptlang.org/) and [Vue](https://vuejs.org) working together.
 This guide is flexible enough that any steps here can be used to integrate TypeScript into an existing Vue project.
+
+# Before you begin
+New to TypeScript?  Want to learn more?  Get up to speed, before jumping in.
+  * [TypeScript 5 Minute Tutorial](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+  * [TypeScript GitHub](https://github.com/Microsoft/TypeScript)
+  * [TypeScript Documentation](https://github.com/Microsoft/TypeScript#documentation)
 
 # Initialize your project
 
