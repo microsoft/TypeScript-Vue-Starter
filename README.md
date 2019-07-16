@@ -4,7 +4,9 @@ This quick start guide will teach you how to get [TypeScript](http://www.typescr
 This guide is flexible enough that any steps here can be used to integrate TypeScript into an existing Vue project.
 
 # Before you begin
-If your new to Typescript and Vue, here are few resources to get you up and running. These are by no means the only way to learn them.
+
+If you're new to Typescript and Vue, here are few resources to get you up and running:
+
 ## TypeScript
   * [Up and Running with TypeScript](https://egghead.io/courses/up-and-running-with-typescript)
   * [TypeScript 5 Minute Tutorial](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
@@ -15,6 +17,7 @@ If your new to Typescript and Vue, here are few resources to get you up and runn
   * [Vuejs Guide](https://vuejs.org/v2/guide/)
   * [Vuejs Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gQcYgjhBoeQH7wiAyZNrYa)
   * [Build an App with Vue.js](https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs)
+
 
 
 # Initialize your project
@@ -66,7 +69,7 @@ You can always go back and change these in the `package.json` file that's been g
 Ensure TypeScript, Webpack, Vue and the necessary loaders are installed.
 
 ```sh
-npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler
+npm install --save-dev typescript webpack webpack-cli ts-loader css-loader vue vue-loader vue-template-compiler
 ```
 
 Webpack is a tool that will bundle your code and optionally all of its dependencies into a single `.js` file.
@@ -81,6 +84,12 @@ You'll want to bring your TypeScript files together - both the code you'll be wr
 
 To do this, you'll need to create a `tsconfig.json` which contains a list of your input files as well as all your compilation settings.
 Simply create a new file in your project root named `tsconfig.json` and fill it with the following contents:
+
+You can easily create `tsconfig.json` this command.
+
+```
+tsc --init
+```
 
 ```json
 {
@@ -110,6 +119,7 @@ We'll need to add a `webpack.config.js` to bundle our app.
 ```js
 var path = require('path')
 var webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: './src/index.ts',
@@ -148,6 +158,13 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
       }
     ]
   },
@@ -164,7 +181,11 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
