@@ -4,10 +4,21 @@ This quick start guide will teach you how to get [TypeScript](http://www.typescr
 This guide is flexible enough that any steps here can be used to integrate TypeScript into an existing Vue project.
 
 # Before you begin
-New to TypeScript?  Want to learn more?  Get up to speed, before jumping in.
+
+If you're new to Typescript and Vue, here are few resources to get you up and running:
+
+## TypeScript
+  * [Up and Running with TypeScript](https://egghead.io/courses/up-and-running-with-typescript)
   * [TypeScript 5 Minute Tutorial](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+  * [Documentation](http://www.typescriptlang.org/docs/home.html)
   * [TypeScript GitHub](https://github.com/Microsoft/TypeScript)
-  * [TypeScript Documentation](https://github.com/Microsoft/TypeScript#documentation)
+
+## Vue
+  * [Vuejs Guide](https://vuejs.org/v2/guide/)
+  * [Vuejs Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gQcYgjhBoeQH7wiAyZNrYa)
+  * [Build an App with Vue.js](https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs)
+
+
 
 # Initialize your project
 
