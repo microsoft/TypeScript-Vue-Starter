@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": {
@@ -21,11 +21,40 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.2",
+    "@vue/test-utils": "^1.0.0-beta.25",
     "css-loader": "^0.28.1",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.3",
     "ts-loader": "^2.0.3",
     "typescript": "^2.7.2",
+    "vue-jest": "^2.6.0",
     "vue-loader": "^12.0.3",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^2.5.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "vue"
+    ],
+    "modulePaths": [
+      "<rootDir>/src",
+      "<rootDir>/node_modules"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      ".*\\.(ts)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "globals": {
+      "vue-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
   }
 }
