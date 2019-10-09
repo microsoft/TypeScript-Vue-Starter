@@ -1,3 +1,9 @@
+This repo is deprecated, it was created in the days before Vue shipped with TypeScript out of the box. Now the 
+best path to get started is through [the official CLI](https://cli.vuejs.org). We'll keep this repo around as
+a useful archive.
+
+---
+
 # TypeScript Vue Starter
 
 This quick start guide will teach you how to get [TypeScript](http://www.typescriptlang.org/) and [Vue](https://vuejs.org) working together.
