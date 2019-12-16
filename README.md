@@ -113,6 +113,10 @@ tsc --init
     ]
 }
 ```
+*Trick:* you can use tsc(version>1.6) to initializes a TypeScript project and creates a tsconfig.json file by the command below:
+```sh
+tsc --init -m es2015 --strict --outDir ./build  --sourceMap --noImplicitReturns -t es5
+```
 
 Notice the `strict` flag is set to true.
 At the very least, TypeScript's `noImplicitThis` flag will need to be turned on to leverage Vue's declaration files, but `strict` gives us that and more (like `noImplicitAny` and `strictNullChecks`).
@@ -223,7 +227,7 @@ Your `"scripts"` field should look something like this:
 
 ```json
 "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 ```
